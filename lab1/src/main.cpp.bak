@@ -1,0 +1,48 @@
+/**
+ *  @file   biped.cpp
+ *  @author Simon Yu
+ *  @date   01/12/2022
+ */
+
+/*
+ *  External headers.
+ */
+#include <EEPROM.h>
+
+/*
+ *  Project headers.
+ */
+#include "pin.h"
+#include "neopixel.h"
+#include "display.h"
+#include "serial.h"
+
+/*
+ *  Use biped namespace.
+ */
+using namespace biped;
+
+unsigned int id;
+// TODO Declare variables for the neopixel LEDs
+
+void
+setup()
+{
+    Wire.setPins(ESP32Pin::i2c_sda, ESP32Pin::i2c_scl);
+    biped::Serial::setLogLevelMax(SerialParameter::log_level_max);
+    Wire.begin();
+    EEPROM.begin(EEPROMParameter::size);
+    id = static_cast<unsigned int>(EEPROM.read(AddressParameter::eeprom_serial_number));
+
+    // TODO Initialize the display, serial, and neopixel
+
+    // TODO Display and print to serial the robot ID and net ids of your group
+}
+
+void
+loop()
+{
+    // TODO Generate a simple pattern for the LEDs
+
+    // TODO Display and print to serial the cycle counts
+}
